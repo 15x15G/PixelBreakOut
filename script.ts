@@ -168,11 +168,26 @@ _ball.color = new ColorRGBA()
 balls.push(_ball)
 
 document.addEventListener("mousemove", mouseMoveHandler, false)
+document.addEventListener("touchmove", touchMoveHandler, { passive: false })
+document.addEventListener("touchstart", touchMoveHandler, { passive: false })
 
 var newx: number = 0
 function mouseMoveHandler(e: { clientX: number }) {
   const rect = canvas.getBoundingClientRect()
   let relativeX = ((e.clientX - rect.left) / rect.width) * canvas.width
+  if (relativeX > 0 && relativeX < canvas.width) {
+    newx = clamp(Math.floor(relativeX - bar.width / 2), 0, canvas.width - bar.width)
+  }
+}
+
+function touchMoveHandler(evt: TouchEvent) {
+  evt.preventDefault()
+  const touch = evt.touches[0]
+  const x = touch.clientX
+  //const y = touch.clientY
+  //console.log(`Touch moved to (${x}, ${y})`)
+  const rect = canvas.getBoundingClientRect()
+  let relativeX = ((x - rect.left) / rect.width) * canvas.width
   if (relativeX > 0 && relativeX < canvas.width) {
     newx = clamp(Math.floor(relativeX - bar.width / 2), 0, canvas.width - bar.width)
   }
