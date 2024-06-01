@@ -171,7 +171,8 @@ document.addEventListener("mousemove", mouseMoveHandler, false)
 
 var newx: number = 0
 function mouseMoveHandler(e: { clientX: number }) {
-  let relativeX = e.clientX - canvas.offsetLeft
+  const rect = canvas.getBoundingClientRect()
+  let relativeX = ((e.clientX - rect.left) / rect.width) * canvas.width
   if (relativeX > 0 && relativeX < canvas.width) {
     newx = clamp(Math.floor(relativeX - bar.width / 2), 0, canvas.width - bar.width)
   }
