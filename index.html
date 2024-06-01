@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BreakOut</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        background: #000;
+        display: block;
+        margin: 0 auto;
+      }
+      div {
+        display: block;
+        margin: 0 auto;
+        width: 465px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div style="display: flex">
+        <label id="balllabel">balls:1</label>
+        <label style="flex: 1; text-align: center" id="blocklabel">blocks:46500</label>
+        <label id="fpslabel">00.00 fps</label>
+      </div>
+      <canvas id="myCanvas" width="465" height="465"></canvas>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
